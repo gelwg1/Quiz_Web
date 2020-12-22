@@ -1,24 +1,23 @@
-# Game Quiz
+# Trò chơi đố câu hỏi 
 
-Game Quiz is a quiz that uses opendb.com api
+Web game trò chơi câu đố sử dụng opendb.com api
 
-![Game Quiz](./assets/quiz-master.png)
+![Game Quiz](./assets/Screenshot.png)
 
-## Getting Started
+## Cách sử dụng
 
-To run this project in your development environment. Clone this project and then open indx.html in your browser
+Để chạy chương trình, dùng lệnh git clone https://github.com/gelwg1/Quiz_Web.git 
+sau đó chạy file index.php
 
-## Running the tests
+## Bugs 
 
-Soon
+trang web chưa hiện ra tên người đăng nhập
 
-## Built With
+## Các ngôn ngữ sử dụng 
 
 * HTML
+* CSS / Bootstrap
+* PHP
 * Javascript
-* CSS
-* Bootstrap
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

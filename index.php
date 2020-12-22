@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['user']);
+    header("location: index.php");
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -88,7 +98,12 @@
             else {
               $logedInUsername = $_SESSION['user'];
               ?>
-              <a href="#"><?php echo $logedInUsername; ?></a>
+              <a href="#"><strong><?php echo $logedInUsername; ?></strong>
+              </a>
+              <a href="index.php?logout=1"
+              class="btn btn-primary"><span id="state"></span>
+              Logout
+              </a>
               <?php
             }
             ?>
