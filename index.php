@@ -90,7 +90,7 @@ if (isset($_GET['logout'])) {
                 Log in
                 </a>
                 <a href="./Signup/"
-                class="btn btn-warning"><span id="points"></span>
+                class="btn btn-warning">
                 Sign up
                 </a>
               <?php
@@ -101,7 +101,7 @@ if (isset($_GET['logout'])) {
               <a href="#"><strong><?php echo $logedInUsername; ?></strong>
               </a>
               <a href="index.php?logout=1"
-              class="btn btn-primary"><span id="state"></span>
+              class="btn btn-primary">
               Logout
               </a>
               <?php
