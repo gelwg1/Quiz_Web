@@ -8,7 +8,8 @@ let currentQuestion = 0
 let question = {}
 let answers = []
 let points = 0
-let historyArr =[0,0,0,0,0,0,0,0,0,0]
+let historyArr = [] 
+let i = 0
 const resetQuiz = () => {
 
   formReset()
@@ -18,7 +19,8 @@ const resetQuiz = () => {
   question = {}
   answers = []
   points = 0
-  historyArr = [0,0,0,0,0,0,0,0,0,0]
+  historyArr = []
+  i = 0
 }
 
 // selectors
@@ -261,14 +263,14 @@ const closeModalConfig = () =>
 const finishQuiz = () => {
 
 
-  showModal('Congratulations!', `The game is over. You have a total of ${points}. A new game is starting ${historyArr}`, false) 
+  showModal('Congratulations!', `The game is over. You had ${i}/${configuration.numberOfQuestions} correct answers : ${historyArr} . New game is starting .... `,false) 
 
 
 
   setTimeout(() => {
     closeModal()
     fetchQuestions()
-  }, 15000);
+  }, 10000);
 
 }
 
@@ -445,7 +447,8 @@ console.log(123);
     }
 
     points += 10
-    historyArr[currentQuestion] =1
+    historyArr.push(currentQuestion + 1)
+    i += 1
   } else {
     if (event.target.a.value == 0) {
       anwer0.classList.remove('active')
