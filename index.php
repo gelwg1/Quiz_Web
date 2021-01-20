@@ -111,8 +111,11 @@ if (isset($_GET['logout'])) {
           </div>
         </p>
       </div>
-    </div>
-
+    </div>   
+    <head>
+    <script type="text/javascript" src="LICHAM_FinalVersion.js" ></script>
+  </head>
+    
     <div class="row">
       <div class="col-sm-12">
         <div class="card sm-4 box-shadow">
@@ -122,23 +125,23 @@ if (isset($_GET['logout'])) {
             <form>
 
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-zero">
+                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-zero" id="anwer0">
                   <input class="form-check-input" required="true" type="radio" name="a" id="a-0" value="0"
                     data-js="anwer-zero">
                   <label for="a-0" data-js="anwer-zero"><span class="anwer-text" id="anwer-zero"
                       data-js="anwer-zero"></span></label>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-one">
+                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-one" id="anwer1">
                   <input class="form-check-input" type="radio" name="a" id="a-1" value="1" data-js="anwer-one">
                   <label for="a-1" data-js="anwer-one"><span class="anwer-text" id="anwer-one"
                       data-js="anwer-one"></span></label>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-two">
+                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-two" id="anwer2">
                   <input class="form-check-input" type="radio" name="a" id="a-2" value="2" data-js="anwer-two">
                   <label for="a-2" data-js="anwer-two"><span class="anwer-text" id="anwer-two"
                       data-js="anwer-two"></span></label>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-three">
+                <a href="#" class="list-group-item list-group-item-action" data-js="anwer-three" id="anwer3">
                   <input class="form-check-input" type="radio" name="a" id="a-3" value="3" data-js="anwer-three">
                   <label for="a-3" data-js="anwer-three"><span class="anwer-text" id="anwer-three"
                       data-js="anwer-three"></span></label>
