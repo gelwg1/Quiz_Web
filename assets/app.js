@@ -8,7 +8,7 @@ let currentQuestion = 0
 let question = {}
 let answers = []
 let points = 0
-
+let historyArr =[0,0,0,0,0,0,0,0,0,0]
 const resetQuiz = () => {
 
   formReset()
@@ -18,7 +18,7 @@ const resetQuiz = () => {
   question = {}
   answers = []
   points = 0
-
+  historyArr = [0,0,0,0,0,0,0,0,0,0]
 }
 
 // selectors
@@ -46,6 +46,11 @@ const errorAudio = document.querySelector("#error-audio");
 const successAudio = document.querySelector("#success-audio");
 const muteButton = document.querySelector("#mute-button");
 const mutedBanArea = document.querySelector('span#ban-area')
+
+const anwer0 = document.querySelector('#anwer0')
+const anwer1 = document.querySelector('#anwer1')
+const anwer2 = document.querySelector('#anwer2')
+const anwer3 = document.querySelector('#anwer3')
 
 // end selectors
 
@@ -197,11 +202,13 @@ const render = () => {
   questionQuote.innerHTML = question.question
   anwerZero.innerHTML = question.correct_answer
   question.answers = shuffle([question.correct_answer, ...question.incorrect_answers])
-
+ 
+  
   anwerZero.innerHTML  = question.answers[0]
   anwerOne.innerHTML   = question.answers[1]
   anwerTwo.innerHTML   = question.answers[2]
   anwerThree.innerHTML = question.answers[3]
+  
 
   currentQuestionElement.textContent = currentQuestion + 1
 
@@ -254,18 +261,19 @@ const closeModalConfig = () =>
 const finishQuiz = () => {
 
 
-  showModal('Congratulations!', `The game is over. You have a total of ${points}. A new game is starting.`, false)    
+  showModal('Congratulations!', `The game is over. You have a total of ${points}. A new game is starting ${historyArr}`, false) 
+
+
 
   setTimeout(() => {
     closeModal()
     fetchQuestions()
-  }, 5000);
+  }, 15000);
 
 }
 
 
 const boot = (questionsData) => {
-
   questions = questionsData.results
   render()
 
@@ -327,6 +335,7 @@ formConfig.addEventListener('submit', event => {
   fetchQuestions()
   closeModalConfig()
 
+
   return
 
 })
@@ -348,7 +357,7 @@ finishButton.addEventListener('click', event => {
   return
 
 })
-
+//nút tiến
 nextButton.addEventListener('click', event => {
 
   event.preventDefault()
@@ -363,7 +372,7 @@ nextButton.addEventListener('click', event => {
   }
 
 })
-
+//nút lùi
 previousButton.addEventListener('click', event => {
 
   event.preventDefault()
@@ -405,21 +414,75 @@ closeConfigButton.addEventListener('click', event => {
 form.addEventListener('submit', event => {
 
   event.preventDefault()
-
+console.log(123);
   questions[currentQuestion].selectedAnswerIndex = Number(event.target.a.value)
 
   const resposta = question.answers[event.target.a.value]
+  // const selectedOption = document.querySelector('#1');
+  var xxx = 0
+  if(question.answers[0] == question.correct_answer){ xxx = 0}
+  if(question.answers[1] == question.correct_answer){ xxx = 1}
+  if(question.answers[2] == question.correct_answer){ xxx = 2}
+  if(question.answers[3] == question.correct_answer){ xxx = 3}
 
   if (resposta === question.correct_answer) {
 
-    showModal('Congratulations!', `Right answer, ${question.correct_answer}.`, false)
+    if (event.target.a.value == 0) {
+      anwer0.classList.remove('active')
+      anwer0.classList.add('bg-success')
+    } 
+    if(event.target.a.value == 1) {
+      anwer1.classList.remove('active')
+      anwer1.classList.add('bg-success')
+    }
+    if(event.target.a.value == 2) {
+      anwer2.classList.remove('active')
+      anwer2.classList.add('bg-success')
+    }
+    if(event.target.a.value == 3) {
+      anwer3.classList.remove('active')
+      anwer3.classList.add('bg-success')
+    }
+
     points += 10
-
+    historyArr[currentQuestion] =1
   } else {
+    if (event.target.a.value == 0) {
+      anwer0.classList.remove('active')
+      anwer0.classList.add('bg-danger')
+    } 
+    if(event.target.a.value == 1) {
+      anwer1.classList.remove('active')
+      anwer1.classList.add('bg-danger')
+    }
+    if(event.target.a.value == 2) {
+      anwer2.classList.remove('active')
+      anwer2.classList.add('bg-danger')
+    }
+    if(event.target.a.value == 3) {
+      anwer3.classList.remove('active')
+      anwer3.classList.add('bg-danger')
+    }
 
-    showModal('Error',` Wrong! The correct answer is ${question.correct_answer}.`, true)
+    if (xxx == 0) {
+      anwer0.classList.add('bg-success')
+    } 
+    if(xxx == 1) {
+      anwer1.classList.add('bg-success')
+    }
+    if(xxx == 2) {
+      anwer2.classList.add('bg-success')
+    }
+    if(xxx == 3) {
+      anwer3.classList.add('bg-success')
+    }
   }
-
+  setTimeout(() => {
+    
+    anwer0.classList.remove('bg-danger','bg-success')
+    anwer1.classList.remove('bg-danger','bg-success')
+    anwer2.classList.remove('bg-danger','bg-success')
+    anwer3.classList.remove('bg-danger','bg-success')
   event.target.reset()
 
   if (currentQuestion + 1 < configuration.numberOfQuestions) {
@@ -431,6 +494,7 @@ form.addEventListener('submit', event => {
     finishQuiz()
 
   }
+}, 1000);
 
 
 })
